@@ -7,3 +7,5 @@ shed.py can be opened with Blender 3.0 using python scripting api.
 ![Screenshot from 2022-02-18 11-51-55](https://user-images.githubusercontent.com/17167992/154685072-f091ef8e-a465-4608-817e-d8b52ac94e26.png)
 
 ![top view](https://user-images.githubusercontent.com/17167992/154685413-7b43f5a0-61d0-4728-94bc-f5ba104a799d.png)
+
+![top view](https://user-images.githubusercontent.com/17167992/154686818-2bf6ec05-26cb-4e20-95b8-76a82da59da4.png)
