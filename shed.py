@@ -15,6 +15,7 @@ blocklength = 9
 blockheight = 4
 blockspacing = 61
 latsspacing = shedwidth*inchesinfeet/n
+thickness = 0.5
 
 #front side bottom
 bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2,widthy/2,heightz/2), scale=(lengthx,widthy,heightz))
@@ -102,4 +103,21 @@ bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', loc
 for y in range(3):
     for x in range(4):
         bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x*blockspacing+blocklength/2,y*latsspacing-shedwidth*inchesinfeet+shedwidth*inchesinfeet+latsspacing-floorwidth/2,-blockheight/2-(2*floorthickz)-widthy), scale=(blocklength,blockwidth,blockheight))  
-          
+        
+for x in range(4):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x*blockspacing+blocklength/2,blockwidth/2,-blockheight/2-(2*floorthickz)-widthy), scale=(blocklength,blockwidth,blockheight))
+
+#outside cladding
+#front sides
+for x in range(15):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2,-thickness/2,shedheight*inchesinfeet-blockwidth/2-x*blockwidth), scale=(lengthx,thickness,blockwidth)) 
+
+#back sides
+for x in range(15):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2,shedwidth*inchesinfeet+thickness/2,shedheight*inchesinfeet-blockwidth/2-x*blockwidth), scale=(lengthx,thickness,blockwidth)) 
+    
+#bach ends         to do...
+'''
+for x in range(15):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2,shedwidth*inchesinfeet+thickness/2,shedheight*inchesinfeet-blockwidth/2-x*blockwidth), scale=(lengthx,thickness,blockwidth)) 
+'''
