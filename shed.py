@@ -40,7 +40,6 @@ bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', loc
 
 #front end top
 bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(widthy/2,shedwidth*inchesinfeet/2,shedheight*inchesinfeet-heightz/2), scale=(widthy,shedwidth*inchesinfeet-2*widthy,heightz))
-
 # front sides
 for x in range(1,11):
     bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x*oncenter,widthy/2,(shedheight*inchesinfeet)/2), scale=(heightz,widthy,shedheight*inchesinfeet-2*heightz))
@@ -52,11 +51,21 @@ for x in range(1,11):
 # back end sides
 for x in range(1,6):
     bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx-widthy/2,x*oncenter,(shedheight*inchesinfeet)/2), scale=(widthy,heightz,shedheight*inchesinfeet-2*heightz))
-'''
-# front end sides
-for x in range(1,6):
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(widthy/2,x*oncenter,(shedheight*inchesinfeet/2)), scale=(widthy,heightz,shedheight*inchesinfeet-2*heightz))
-'''
+
+# front end (reinforced walls)
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(widthy/2,oncenter,(shedheight*inchesinfeet/2)), scale=(widthy,heightz,shedheight*inchesinfeet-2*heightz))
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(widthy/2,oncenter-heightz,(shedheight*inchesinfeet/2)), scale=(widthy,heightz,shedheight*inchesinfeet-2*heightz))
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(widthy/2,4*oncenter,(shedheight*inchesinfeet/2)), scale=(widthy,heightz,shedheight*inchesinfeet-2*heightz))
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(widthy/2,4*oncenter+heightz,(shedheight*inchesinfeet/2)), scale=(widthy,heightz,shedheight*inchesinfeet-2*heightz))
+
+#horizontal reinforcement
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(heightz/2,shedheight*inchesinfeet/2+heightz,(shedheight*inchesinfeet)-blockwidth+heightz/2), scale=(heightz,3*oncenter,heightz))
+
+
+
  # back end corners
  # right side as you look at it from inside
 bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx-heightz/2,widthy/2,(shedheight*inchesinfeet)/2), scale=(heightz,widthy,shedheight*inchesinfeet-2*heightz))
@@ -96,7 +105,7 @@ for x in range(11):
 for x in range(n):
    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2,x*latsspacing-shedwidth*inchesinfeet+shedwidth*inchesinfeet+latsspacing-floorwidth/2,-floorthickz-heightz-floorthickz/2-heightz), scale=(lengthx,floorwidth,floorthickz))  
    
-#extra lat
+#extra lats
 bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2,floorwidth/2,-floorthickz-heightz-floorthickz/2-heightz), scale=(lengthx,floorwidth,floorthickz))  
    
 #blocks
@@ -108,19 +117,21 @@ for x in range(4):
     bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(x*blockspacing+blocklength/2,blockwidth/2,-blockheight/2-(2*floorthickz)-widthy), scale=(blocklength,blockwidth,blockheight))
 
 #outside cladding
-
 #front sides
-for x in range(15):
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2,-thickness/2,shedheight*inchesinfeet-blockwidth/2-x*blockwidth), scale=(lengthx,thickness,blockwidth)) 
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2-thickness/4,-thickness/2,shedheight*inchesinfeet-blockwidth/2), scale=(lengthx-thickness/2,thickness,blockwidth)) 
+
+#left of left window
+for x in range(7):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(blockwidth/2,thickness/2,shedheight*inchesinfeet/2), scale=(blockwidth,thickness,oncenter)) 
     
 #back sides
 for x in range(15):
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2,shedwidth*inchesinfeet+thickness/2,shedheight*inchesinfeet-blockwidth/2-x*blockwidth), scale=(lengthx,thickness,blockwidth)) 
-    
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx/2-thickness/4,shedwidth*inchesinfeet+thickness/2,shedheight*inchesinfeet-blockwidth/2-x*blockwidth), scale=(lengthx-thickness/2,thickness,blockwidth)) 
+
 #back ends
 for x in range(15):
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx+thickness,shedwidth*inchesinfeet/2,shedheight*inchesinfeet-x*blockwidth-blockwidth/2), scale=(thickness,shedwidth*inchesinfeet,blockwidth))
-    
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx,shedwidth*inchesinfeet/2,shedheight*inchesinfeet-x*blockwidth-blockwidth/2), scale=(thickness,shedwidth*inchesinfeet,blockwidth))
+
 #front end top piece
 bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness/2,shedwidth*inchesinfeet/2,shedheight*inchesinfeet-blockwidth/2), scale=(thickness,shedwidth*inchesinfeet,blockwidth))
 
@@ -129,8 +140,8 @@ for x in range(2,15):
     bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness/2,oncenter/2+4*oncenter+1.5+1,shedheight*inchesinfeet-x*blockwidth+blockwidth/2), scale=(thickness,oncenter+widthy+4+2-1-2,blockwidth)) 
 
 #Front end right from outside
-for x in range(2,15):
-    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness/2,oncenter-2*widthy-heightz-heightz/2+heightz/2+widthy/2-thickness/2-heightz/8,shedheight*inchesinfeet-x*blockwidth+blockwidth/2-thickness/2), scale=(thickness,oncenter+widthy-thickness-heightz-thickness-heightz/4,blockwidth))
+for x in range(3,16):
+    bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness,oncenter-2*widthy-heightz-heightz/2+heightz/2+widthy/2-thickness/2-heightz/8,shedheight*inchesinfeet-x*blockwidth+blockwidth+blockwidth/2), scale=(thickness,oncenter+widthy-thickness-heightz-thickness-heightz/4,blockwidth))
 
 #front end bottom piece
 bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness/2,shedwidth*inchesinfeet/2,-blockwidth/2), scale=(thickness,shedwidth*inchesinfeet,blockwidth))
@@ -145,4 +156,54 @@ bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', loc
 '''
 #test piece III
 bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(widthy/2+2,4*oncenter+oncenter/2+widthy-2-0.25/2-2/2+4-2-1-1+2+0.25+1-0.5,12-4-0.25+1), scale=(1,oncenter+widthy,2))
+'''
+
+#reinforced front sides
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(3*oncenter-heightz, widthy/2,(shedheight*inchesinfeet)/2), scale=(heightz, widthy, shedheight*inchesinfeet-2*heightz))
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(4*oncenter+heightz, widthy/2,(shedheight*inchesinfeet)/2), scale=(heightz, widthy, shedheight*inchesinfeet-2*heightz))
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(6*oncenter+heightz, widthy/2,(shedheight*inchesinfeet)/2), scale=(heightz, widthy, shedheight*inchesinfeet-2*heightz))
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(7*oncenter+heightz, widthy/2,(shedheight*inchesinfeet)/2), scale=(heightz, widthy, shedheight*inchesinfeet-2*heightz))
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(9*oncenter+heightz, widthy/2,(shedheight*inchesinfeet)/2), scale=(heightz, widthy, shedheight*inchesinfeet-2*heightz))
+
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(10*oncenter+heightz, widthy/2,(shedheight*inchesinfeet)/2), scale=(heightz, widthy, shedheight*inchesinfeet-2*heightz))
+
+#corners anticlochwise looking down
+#looking from outside
+
+#front side left corner piece
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(blockwidth/2-2*thickness,-thickness-thickness/2,shedheight*inchesinfeet/2-blockwidth/2), scale=(blockwidth,thickness,shedheight*inchesinfeet+blockwidth))
+
+#front side right corner piece
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx-blockwidth/2+thickness/2,-thickness-thickness/2,shedheight*inchesinfeet/2-blockwidth+blockwidth/2+thickness/2), scale=(blockwidth,thickness,shedheight*inchesinfeet+blockwidth))
+
+#back end left corner piece
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx+thickness,blockwidth/2-thickness-thickness,shedheight*inchesinfeet/2-blockwidth/2), scale=(thickness,blockwidth,shedheight*inchesinfeet+blockwidth))
+
+#back end right corner piece
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx+thickness-thickness/2+thickness/2,blockwidth/2+(shedwidth*inchesinfeet)-blockwidth+thickness+thickness,shedheight*inchesinfeet/2-blockwidth/2+thickness/2), scale=(thickness,blockwidth,shedheight*inchesinfeet+blockwidth))
+
+#back side left corner piece
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(lengthx-blockwidth/2+thickness/2,shedwidth*inchesinfeet+thickness+thickness/2,shedheight*inchesinfeet/2-blockwidth/2+thickness/2), scale=(blockwidth,thickness,shedheight*inchesinfeet+blockwidth))
+
+#back side right corner piece
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(blockwidth/2-thickness-thickness,shedwidth*inchesinfeet+thickness/2+thickness,shedheight*inchesinfeet/2-blockwidth/2+thickness/2), scale=(blockwidth,thickness,shedheight*inchesinfeet+blockwidth))
+
+# front end left corner piece
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness-thickness/2,thickness+shedwidth*inchesinfeet-blockwidth/2,shedheight*inchesinfeet/2-blockwidth/2+thickness/2), scale=(-thickness,blockwidth,shedheight*inchesinfeet+blockwidth))
+
+# front end right corner piece
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness-thickness/2,blockwidth/2-2*thickness,shedheight*inchesinfeet/2-blockwidth/2+thickness/2), scale=(-thickness,blockwidth,shedheight*inchesinfeet+blockwidth))
+
+#window left
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness-thickness/2,blockwidth/2-2*thickness,shedheight*inchesinfeet/2-blockwidth/2+thickness/2), scale=(-thickness,blockwidth,shedheight*inchesinfeet+blockwidth))
+#window right
+
+#inside cladding
+#front side
+'''
+bpy.ops.mesh.primitive_cube_add(size=1, enter_editmode=False, align='WORLD', location=(-thickness-thickness/2,blockwidth/2-2*thickness,shedheight*inchesinfeet/2-blockwidth/2+thickness/2), scale=(-thickness,blockwidth,shedheight*inchesinfeet+blockwidth))
 '''
